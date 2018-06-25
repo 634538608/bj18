@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>图书列表</h1>
+{% for book in booklist %}
+{{ book.btitle }}---<a href="{% url 'booktest:delete'  book.id %}">删除</a><br>
+{% endfor %}
+<hr>
+显示页码信息：当前页码没有链接，其它页码有链接<br>
+{% for pindex in plist %}
+    {% if pIndex == pindex %}
+    {{ pindex }}
+    {% else %}
+    <a href="{% url 'booktest:index' pindex %}">{{ pindex }}</a>
+    {% endif %}
+{% endfor %}
+<h1>   <a href="{% url 'booktest:detail' %}">detail</a>
+</h1>
+</body>
+</html>
